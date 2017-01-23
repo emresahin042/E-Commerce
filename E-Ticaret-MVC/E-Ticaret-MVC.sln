@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-Ticaret-MVC", "E-Ticaret-MVC\E-Ticaret-MVC.csproj", "{59C4AB10-17EC-4C57-BD20-D13BAB47E01C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59C4AB10-17EC-4C57-BD20-D13BAB47E01C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59C4AB10-17EC-4C57-BD20-D13BAB47E01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59C4AB10-17EC-4C57-BD20-D13BAB47E01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59C4AB10-17EC-4C57-BD20-D13BAB47E01C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

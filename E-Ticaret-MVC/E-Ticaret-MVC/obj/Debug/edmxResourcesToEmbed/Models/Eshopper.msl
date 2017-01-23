@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EShopperModelStoreContainer" CdmEntityContainer="EShopperEntities">
+    <EntitySetMapping Name="Bedenler">
+      <EntityTypeMapping TypeName="EShopperModel.Bedenler">
+        <MappingFragment StoreEntitySet="Bedenler">
+          <ScalarProperty Name="BedenID" ColumnName="BedenID" />
+          <ScalarProperty Name="BedenAdi" ColumnName="BedenAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BedenvsUrun">
+      <EntityTypeMapping TypeName="EShopperModel.BedenvsUrun">
+        <MappingFragment StoreEntitySet="BedenvsUrun">
+          <ScalarProperty Name="GecisID" ColumnName="GecisID" />
+          <ScalarProperty Name="BedenID" ColumnName="BedenID" />
+          <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FaturaDetay">
+      <EntityTypeMapping TypeName="EShopperModel.FaturaDetay">
+        <MappingFragment StoreEntitySet="FaturaDetay">
+          <ScalarProperty Name="DetayID" ColumnName="DetayID" />
+          <ScalarProperty Name="faturaID" ColumnName="faturaID" />
+          <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+          <ScalarProperty Name="Miktar" ColumnName="Miktar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faturalar">
+      <EntityTypeMapping TypeName="EShopperModel.Faturalar">
+        <MappingFragment StoreEntitySet="Faturalar">
+          <ScalarProperty Name="FaturaID" ColumnName="FaturaID" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gorseller">
+      <EntityTypeMapping TypeName="EShopperModel.Gorseller">
+        <MappingFragment StoreEntitySet="Gorseller">
+          <ScalarProperty Name="GorselID" ColumnName="GorselID" />
+          <ScalarProperty Name="ResimUrl" ColumnName="ResimUrl" />
+          <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategori">
+      <EntityTypeMapping TypeName="EShopperModel.Kategori">
+        <MappingFragment StoreEntitySet="Kategori">
+          <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+          <ScalarProperty Name="KategoriAdi" ColumnName="KategoriAdi" />
+          <ScalarProperty Name="BagliKategori" ColumnName="BagliKategori" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Markalar">
+      <EntityTypeMapping TypeName="EShopperModel.Markalar">
+        <MappingFragment StoreEntitySet="Markalar">
+          <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
+          <ScalarProperty Name="MarkaAdi" ColumnName="MarkaAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Musteriler">
+      <EntityTypeMapping TypeName="EShopperModel.Musteriler">
+        <MappingFragment StoreEntitySet="Musteriler">
+          <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+          <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="EShopperModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Urunler">
+      <EntityTypeMapping TypeName="EShopperModel.Urunler">
+        <MappingFragment StoreEntitySet="Urunler">
+          <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+          <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+          <ScalarProperty Name="UrunAciklama" ColumnName="UrunAciklama" />
+          <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+          <ScalarProperty Name="VitrineCikisTarih" ColumnName="VitrineCikisTarih" />
+          <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
+          <ScalarProperty Name="BirimFiyat" ColumnName="BirimFiyat" />
+          <ScalarProperty Name="GirenAdet" ColumnName="GirenAdet" />
+          <ScalarProperty Name="CikanAdet" ColumnName="CikanAdet" />
+          <ScalarProperty Name="NetAdet" ColumnName="NetAdet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yorumlar">
+      <EntityTypeMapping TypeName="EShopperModel.Yorumlar">
+        <MappingFragment StoreEntitySet="Yorumlar">
+          <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+          <ScalarProperty Name="YorumID" ColumnName="YorumID" />
+          <ScalarProperty Name="Yorum" ColumnName="Yorum" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="yorumcu" ColumnName="yorumcu" />
+          <ScalarProperty Name="tarih" ColumnName="tarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kampanya">
+      <EntityTypeMapping TypeName="EShopperModel.kampanya">
+        <MappingFragment StoreEntitySet="kampanya">
+          <ScalarProperty Name="kampanyaID" ColumnName="kampanyaID" />
+          <ScalarProperty Name="KampanyaBasligi" ColumnName="KampanyaBasligi" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Resim" ColumnName="Resim" />
+          <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
+          <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+          <ScalarProperty Name="BitisTarihi" ColumnName="BitisTarihi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_VitrinUrunler">
+      <EntityTypeMapping TypeName="EShopperModel.v_VitrinUrunler">
+        <MappingFragment StoreEntitySet="v_VitrinUrunler">
+          <ScalarProperty Name="ResimUrl" ColumnName="ResimUrl" />
+          <ScalarProperty Name="NetAdet" ColumnName="NetAdet" />
+          <ScalarProperty Name="CikanAdet" ColumnName="CikanAdet" />
+          <ScalarProperty Name="GirenAdet" ColumnName="GirenAdet" />
+          <ScalarProperty Name="BirimFiyat" ColumnName="BirimFiyat" />
+          <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
+          <ScalarProperty Name="VitrineCikisTarih" ColumnName="VitrineCikisTarih" />
+          <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+          <ScalarProperty Name="UrunAciklama" ColumnName="UrunAciklama" />
+          <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+          <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

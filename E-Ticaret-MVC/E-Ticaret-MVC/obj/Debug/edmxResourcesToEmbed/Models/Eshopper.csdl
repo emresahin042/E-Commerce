@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EShopperModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bedenler">
+    <Key>
+      <PropertyRef Name="BedenID" />
+    </Key>
+    <Property Name="BedenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BedenAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BedenvsUrun" Relationship="Self.FK_BedenvsUrun_Bedenler" FromRole="Bedenler" ToRole="BedenvsUrun" />
+  </EntityType>
+  <EntityType Name="BedenvsUrun">
+    <Key>
+      <PropertyRef Name="GecisID" />
+    </Key>
+    <Property Name="GecisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BedenID" Type="Int32" />
+    <Property Name="UrunID" Type="Int32" />
+    <NavigationProperty Name="Bedenler" Relationship="Self.FK_BedenvsUrun_Bedenler" FromRole="BedenvsUrun" ToRole="Bedenler" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK_BedenvsUrun_Urunler" FromRole="BedenvsUrun" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="FaturaDetay">
+    <Key>
+      <PropertyRef Name="DetayID" />
+    </Key>
+    <Property Name="DetayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="faturaID" Type="Int32" />
+    <Property Name="UrunID" Type="Int32" />
+    <Property Name="Miktar" Type="Int32" />
+    <NavigationProperty Name="Faturalar" Relationship="Self.FK_FaturaDetay_Faturalar" FromRole="FaturaDetay" ToRole="Faturalar" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK_FaturaDetay_Urunler" FromRole="FaturaDetay" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="Faturalar">
+    <Key>
+      <PropertyRef Name="FaturaID" />
+    </Key>
+    <Property Name="FaturaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tarih" Type="DateTime" Precision="3" />
+    <Property Name="MusteriID" Type="Int32" />
+    <NavigationProperty Name="FaturaDetay" Relationship="Self.FK_FaturaDetay_Faturalar" FromRole="Faturalar" ToRole="FaturaDetay" />
+    <NavigationProperty Name="Musteriler" Relationship="Self.FK_Faturalar_Musteriler" FromRole="Faturalar" ToRole="Musteriler" />
+  </EntityType>
+  <EntityType Name="Gorseller">
+    <Key>
+      <PropertyRef Name="GorselID" />
+    </Key>
+    <Property Name="GorselID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResimUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UrunID" Type="Int32" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK_Gorseller_Urunler" FromRole="Gorseller" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="KategoriID" />
+    </Key>
+    <Property Name="KategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KategoriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BagliKategori" Type="Int32" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK_Urunler_Kategori" FromRole="Kategori" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="Markalar">
+    <Key>
+      <PropertyRef Name="MarkaID" />
+    </Key>
+    <Property Name="MarkaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MarkaAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK_Urunler_Markalar" FromRole="Markalar" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="Musteriler">
+    <Key>
+      <PropertyRef Name="MusteriID" />
+    </Key>
+    <Property Name="MusteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdSoyad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Faturalar" Relationship="Self.FK_Faturalar_Musteriler" FromRole="Musteriler" ToRole="Faturalar" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Urunler">
+    <Key>
+      <PropertyRef Name="UrunID" />
+    </Key>
+    <Property Name="UrunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UrunAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KategoriID" Type="Int32" />
+    <Property Name="VitrineCikisTarih" Type="DateTime" Precision="3" />
+    <Property Name="MarkaID" Type="Int32" />
+    <Property Name="BirimFiyat" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="GirenAdet" Type="Int32" />
+    <Property Name="CikanAdet" Type="Int32" />
+    <Property Name="NetAdet" Type="Int32" />
+    <NavigationProperty Name="BedenvsUrun" Relationship="Self.FK_BedenvsUrun_Urunler" FromRole="Urunler" ToRole="BedenvsUrun" />
+    <NavigationProperty Name="FaturaDetay" Relationship="Self.FK_FaturaDetay_Urunler" FromRole="Urunler" ToRole="FaturaDetay" />
+    <NavigationProperty Name="Gorseller" Relationship="Self.FK_Gorseller_Urunler" FromRole="Urunler" ToRole="Gorseller" />
+    <NavigationProperty Name="Kategori" Relationship="Self.FK_Urunler_Kategori" FromRole="Urunler" ToRole="Kategori" />
+    <NavigationProperty Name="Markalar" Relationship="Self.FK_Urunler_Markalar" FromRole="Urunler" ToRole="Markalar" />
+    <NavigationProperty Name="kampanya" Relationship="Self.FK_kampanya_Urunler" FromRole="Urunler" ToRole="kampanya" />
+    <NavigationProperty Name="Yorumlar" Relationship="Self.FK_Yorumlar_Urunler" FromRole="Urunler" ToRole="Yorumlar" />
+  </EntityType>
+  <EntityType Name="Yorumlar">
+    <Key>
+      <PropertyRef Name="YorumID" />
+    </Key>
+    <Property Name="UrunId" Type="Int32" />
+    <Property Name="YorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Yorum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Rate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="yorumcu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tarih" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK_Yorumlar_Urunler" FromRole="Yorumlar" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="kampanya">
+    <Key>
+      <PropertyRef Name="kampanyaID" />
+    </Key>
+    <Property Name="kampanyaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KampanyaBasligi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Resim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BaslangicTarihi" Type="DateTime" Precision="3" />
+    <Property Name="UrunID" Type="Int32" />
+    <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK_kampanya_Urunler" FromRole="kampanya" ToRole="Urunler" />
+  </EntityType>
+  <Association Name="FK_BedenvsUrun_Bedenler">
+    <End Role="Bedenler" Type="Self.Bedenler" Multiplicity="0..1" />
+    <End Role="BedenvsUrun" Type="Self.BedenvsUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bedenler">
+        <PropertyRef Name="BedenID" />
+      </Principal>
+      <Dependent Role="BedenvsUrun">
+        <PropertyRef Name="BedenID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BedenvsUrun_Urunler">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+    <End Role="BedenvsUrun" Type="Self.BedenvsUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="BedenvsUrun">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FaturaDetay_Faturalar">
+    <End Role="Faturalar" Type="Self.Faturalar" Multiplicity="0..1" />
+    <End Role="FaturaDetay" Type="Self.FaturaDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faturalar">
+        <PropertyRef Name="FaturaID" />
+      </Principal>
+      <Dependent Role="FaturaDetay">
+        <PropertyRef Name="faturaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FaturaDetay_Urunler">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+    <End Role="FaturaDetay" Type="Self.FaturaDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="FaturaDetay">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Faturalar_Musteriler">
+    <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="0..1" />
+    <End Role="Faturalar" Type="Self.Faturalar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteriler">
+        <PropertyRef Name="MusteriID" />
+      </Principal>
+      <Dependent Role="Faturalar">
+        <PropertyRef Name="MusteriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gorseller_Urunler">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+    <End Role="Gorseller" Type="Self.Gorseller" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="Gorseller">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urunler_Kategori">
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriID" />
+      </Principal>
+      <Dependent Role="Urunler">
+        <PropertyRef Name="KategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urunler_Markalar">
+    <End Role="Markalar" Type="Self.Markalar" Multiplicity="0..1" />
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Markalar">
+        <PropertyRef Name="MarkaID" />
+      </Principal>
+      <Dependent Role="Urunler">
+        <PropertyRef Name="MarkaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kampanya_Urunler">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+    <End Role="kampanya" Type="Self.kampanya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="kampanya">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorumlar_Urunler">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+    <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="Yorumlar">
+        <PropertyRef Name="UrunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EShopperEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bedenler" EntityType="Self.Bedenler" />
+    <EntitySet Name="BedenvsUrun" EntityType="Self.BedenvsUrun" />
+    <EntitySet Name="FaturaDetay" EntityType="Self.FaturaDetay" />
+    <EntitySet Name="Faturalar" EntityType="Self.Faturalar" />
+    <EntitySet Name="Gorseller" EntityType="Self.Gorseller" />
+    <EntitySet Name="Kategori" EntityType="Self.Kategori" />
+    <EntitySet Name="Markalar" EntityType="Self.Markalar" />
+    <EntitySet Name="Musteriler" EntityType="Self.Musteriler" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Urunler" EntityType="Self.Urunler" />
+    <EntitySet Name="Yorumlar" EntityType="Self.Yorumlar" />
+    <EntitySet Name="kampanya" EntityType="Self.kampanya" />
+    <AssociationSet Name="FK_BedenvsUrun_Bedenler" Association="Self.FK_BedenvsUrun_Bedenler">
+      <End Role="Bedenler" EntitySet="Bedenler" />
+      <End Role="BedenvsUrun" EntitySet="BedenvsUrun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BedenvsUrun_Urunler" Association="Self.FK_BedenvsUrun_Urunler">
+      <End Role="Urunler" EntitySet="Urunler" />
+      <End Role="BedenvsUrun" EntitySet="BedenvsUrun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FaturaDetay_Faturalar" Association="Self.FK_FaturaDetay_Faturalar">
+      <End Role="Faturalar" EntitySet="Faturalar" />
+      <End Role="FaturaDetay" EntitySet="FaturaDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FaturaDetay_Urunler" Association="Self.FK_FaturaDetay_Urunler">
+      <End Role="Urunler" EntitySet="Urunler" />
+      <End Role="FaturaDetay" EntitySet="FaturaDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Faturalar_Musteriler" Association="Self.FK_Faturalar_Musteriler">
+      <End Role="Musteriler" EntitySet="Musteriler" />
+      <End Role="Faturalar" EntitySet="Faturalar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gorseller_Urunler" Association="Self.FK_Gorseller_Urunler">
+      <End Role="Urunler" EntitySet="Urunler" />
+      <End Role="Gorseller" EntitySet="Gorseller" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urunler_Kategori" Association="Self.FK_Urunler_Kategori">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Urunler" EntitySet="Urunler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urunler_Markalar" Association="Self.FK_Urunler_Markalar">
+      <End Role="Markalar" EntitySet="Markalar" />
+      <End Role="Urunler" EntitySet="Urunler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kampanya_Urunler" Association="Self.FK_kampanya_Urunler">
+      <End Role="Urunler" EntitySet="Urunler" />
+      <End Role="kampanya" EntitySet="kampanya" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorumlar_Urunler" Association="Self.FK_Yorumlar_Urunler">
+      <End Role="Urunler" EntitySet="Urunler" />
+      <End Role="Yorumlar" EntitySet="Yorumlar" />
+    </AssociationSet>
+    <EntitySet Name="v_VitrinUrunler" EntityType="EShopperModel.v_VitrinUrunler" />
+  </EntityContainer>
+  <EntityType Name="v_VitrinUrunler">
+    <Key>
+      <PropertyRef Name="UrunID" />
+    </Key>
+    <Property Name="UrunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UrunAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KategoriID" Type="Int32" />
+    <Property Name="VitrineCikisTarih" Type="DateTime" Precision="3" />
+    <Property Name="MarkaID" Type="Int32" />
+    <Property Name="BirimFiyat" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="GirenAdet" Type="Int32" />
+    <Property Name="CikanAdet" Type="Int32" />
+    <Property Name="NetAdet" Type="Int32" />
+    <Property Name="ResimUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

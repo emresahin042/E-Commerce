@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Sablon/Index.cshtml";
+}
+
+@Html.Partial("~/Views/Sablon/Slider.cshtml");
+
+<section>
+    <div class="container">
+        <div class="row">
+           @Html.Partial("~/Views/Sablon/Kategoriler.cshtml");
+           @Html.Partial("~/Views/Sablon/Galeri.cshtml");
+        </div>
+    </div>
+</section>
+
+

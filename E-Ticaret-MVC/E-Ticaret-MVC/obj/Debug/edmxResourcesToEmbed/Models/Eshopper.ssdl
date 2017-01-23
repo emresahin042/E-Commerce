@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EShopperModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bedenler">
+    <Key>
+      <PropertyRef Name="BedenID" />
+    </Key>
+    <Property Name="BedenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BedenAdi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BedenvsUrun">
+    <Key>
+      <PropertyRef Name="GecisID" />
+    </Key>
+    <Property Name="GecisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BedenID" Type="int" />
+    <Property Name="UrunID" Type="int" />
+  </EntityType>
+  <EntityType Name="FaturaDetay">
+    <Key>
+      <PropertyRef Name="DetayID" />
+    </Key>
+    <Property Name="DetayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="faturaID" Type="int" />
+    <Property Name="UrunID" Type="int" />
+    <Property Name="Miktar" Type="int" />
+  </EntityType>
+  <EntityType Name="Faturalar">
+    <Key>
+      <PropertyRef Name="FaturaID" />
+    </Key>
+    <Property Name="FaturaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tarih" Type="datetime" />
+    <Property Name="MusteriID" Type="int" />
+  </EntityType>
+  <EntityType Name="Gorseller">
+    <Key>
+      <PropertyRef Name="GorselID" />
+    </Key>
+    <Property Name="GorselID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResimUrl" Type="nvarchar(max)" />
+    <Property Name="UrunID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EShopper.dbo.kampanya' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="kampanya">
+    <Key>
+      <PropertyRef Name="kampanyaID" />
+    </Key>
+    <Property Name="kampanyaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KampanyaBasligi" Type="nvarchar(max)" />
+    <Property Name="Aciklama" Type="nvarchar(max)" />
+    <Property Name="Resim" Type="nvarchar(max)" />
+    <Property Name="BaslangicTarihi" Type="datetime" />
+    <Property Name="UrunID" Type="int" />
+    <Property Name="BitisTarihi" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="KategoriID" />
+    </Key>
+    <Property Name="KategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KategoriAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="BagliKategori" Type="int" />
+  </EntityType>
+  <EntityType Name="Markalar">
+    <Key>
+      <PropertyRef Name="MarkaID" />
+    </Key>
+    <Property Name="MarkaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MarkaAdi" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Musteriler">
+    <Key>
+      <PropertyRef Name="MusteriID" />
+    </Key>
+    <Property Name="MusteriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdSoyad" Type="nvarchar(max)" />
+    <Property Name="Adres" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Urunler">
+    <Key>
+      <PropertyRef Name="UrunID" />
+    </Key>
+    <Property Name="UrunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UrunAdi" Type="nvarchar(max)" />
+    <Property Name="UrunAciklama" Type="nvarchar(max)" />
+    <Property Name="KategoriID" Type="int" />
+    <Property Name="VitrineCikisTarih" Type="datetime" />
+    <Property Name="MarkaID" Type="int" />
+    <Property Name="BirimFiyat" Type="money" />
+    <Property Name="GirenAdet" Type="int" />
+    <Property Name="CikanAdet" Type="int" />
+    <Property Name="NetAdet" Type="int" />
+  </EntityType>
+  <EntityType Name="Yorumlar">
+    <Key>
+      <PropertyRef Name="YorumID" />
+    </Key>
+    <Property Name="UrunId" Type="int" />
+    <Property Name="YorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Yorum" Type="nvarchar(max)" />
+    <Property Name="Rate" Type="nchar" MaxLength="10" />
+    <Property Name="yorumcu" Type="nvarchar(max)" />
+    <Property Name="tarih" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EShopper.dbo.v_VitrinUrunler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_VitrinUrunler">
+    <Key>
+      <PropertyRef Name="UrunID" />
+    </Key>
+    <Property Name="UrunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UrunAdi" Type="nvarchar(max)" />
+    <Property Name="UrunAciklama" Type="nvarchar(max)" />
+    <Property Name="KategoriID" Type="int" />
+    <Property Name="VitrineCikisTarih" Type="datetime" />
+    <Property Name="MarkaID" Type="int" />
+    <Property Name="BirimFiyat" Type="money" />
+    <Property Name="GirenAdet" Type="int" />
+    <Property Name="CikanAdet" Type="int" />
+    <Property Name="NetAdet" Type="int" />
+    <Property Name="ResimUrl" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_BedenvsUrun_Bedenler">
+    <End Role="Bedenler" Type="Self.Bedenler" Multiplicity="0..1" />
+    <End Role="BedenvsUrun" Type="Self.BedenvsUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bedenler">
+        <PropertyRef Name="BedenID" />
+      </Principal>
+      <Dependent Role="BedenvsUrun">
+        <PropertyRef Name="BedenID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BedenvsUrun_Urunler">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+    <End Role="BedenvsUrun" Type="Self.BedenvsUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="BedenvsUrun">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FaturaDetay_Faturalar">
+    <End Role="Faturalar" Type="Self.Faturalar" Multiplicity="0..1" />
+    <End Role="FaturaDetay" Type="Self.FaturaDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faturalar">
+        <PropertyRef Name="FaturaID" />
+      </Principal>
+      <Dependent Role="FaturaDetay">
+        <PropertyRef Name="faturaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FaturaDetay_Urunler">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+    <End Role="FaturaDetay" Type="Self.FaturaDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="FaturaDetay">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Faturalar_Musteriler">
+    <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="0..1" />
+    <End Role="Faturalar" Type="Self.Faturalar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteriler">
+        <PropertyRef Name="MusteriID" />
+      </Principal>
+      <Dependent Role="Faturalar">
+        <PropertyRef Name="MusteriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gorseller_Urunler">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+    <End Role="Gorseller" Type="Self.Gorseller" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="Gorseller">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kampanya_Urunler">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+    <End Role="kampanya" Type="Self.kampanya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="kampanya">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urunler_Kategori">
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriID" />
+      </Principal>
+      <Dependent Role="Urunler">
+        <PropertyRef Name="KategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urunler_Markalar">
+    <End Role="Markalar" Type="Self.Markalar" Multiplicity="0..1" />
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Markalar">
+        <PropertyRef Name="MarkaID" />
+      </Principal>
+      <Dependent Role="Urunler">
+        <PropertyRef Name="MarkaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Yorumlar_Urunler">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="0..1" />
+    <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="Yorumlar">
+        <PropertyRef Name="UrunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EShopperModelStoreContainer">
+    <EntitySet Name="Bedenler" EntityType="Self.Bedenler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BedenvsUrun" EntityType="Self.BedenvsUrun" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FaturaDetay" EntityType="Self.FaturaDetay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Faturalar" EntityType="Self.Faturalar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gorseller" EntityType="Self.Gorseller" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Markalar" EntityType="Self.Markalar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Urunler" EntityType="Self.Urunler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yorumlar" EntityType="Self.Yorumlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kampanya" EntityType="Self.kampanya" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [kampanya].[kampanyaID] AS [kampanyaID], 
+    [kampanya].[KampanyaBasligi] AS [KampanyaBasligi], 
+    [kampanya].[Aciklama] AS [Aciklama], 
+    [kampanya].[Resim] AS [Resim], 
+    [kampanya].[BaslangicTarihi] AS [BaslangicTarihi], 
+    [kampanya].[UrunID] AS [UrunID], 
+    [kampanya].[BitisTarihi] AS [BitisTarihi]
+    FROM [dbo].[kampanya] AS [kampanya]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_VitrinUrunler" EntityType="Self.v_VitrinUrunler" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_VitrinUrunler].[UrunID] AS [UrunID], 
+    [v_VitrinUrunler].[UrunAdi] AS [UrunAdi], 
+    [v_VitrinUrunler].[UrunAciklama] AS [UrunAciklama], 
+    [v_VitrinUrunler].[KategoriID] AS [KategoriID], 
+    [v_VitrinUrunler].[VitrineCikisTarih] AS [VitrineCikisTarih], 
+    [v_VitrinUrunler].[MarkaID] AS [MarkaID], 
+    [v_VitrinUrunler].[BirimFiyat] AS [BirimFiyat], 
+    [v_VitrinUrunler].[GirenAdet] AS [GirenAdet], 
+    [v_VitrinUrunler].[CikanAdet] AS [CikanAdet], 
+    [v_VitrinUrunler].[NetAdet] AS [NetAdet], 
+    [v_VitrinUrunler].[ResimUrl] AS [ResimUrl]
+    FROM [dbo].[v_VitrinUrunler] AS [v_VitrinUrunler]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_BedenvsUrun_Bedenler" Association="Self.FK_BedenvsUrun_Bedenler">
+      <End Role="Bedenler" EntitySet="Bedenler" />
+      <End Role="BedenvsUrun" EntitySet="BedenvsUrun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BedenvsUrun_Urunler" Association="Self.FK_BedenvsUrun_Urunler">
+      <End Role="Urunler" EntitySet="Urunler" />
+      <End Role="BedenvsUrun" EntitySet="BedenvsUrun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FaturaDetay_Faturalar" Association="Self.FK_FaturaDetay_Faturalar">
+      <End Role="Faturalar" EntitySet="Faturalar" />
+      <End Role="FaturaDetay" EntitySet="FaturaDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FaturaDetay_Urunler" Association="Self.FK_FaturaDetay_Urunler">
+      <End Role="Urunler" EntitySet="Urunler" />
+      <End Role="FaturaDetay" EntitySet="FaturaDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Faturalar_Musteriler" Association="Self.FK_Faturalar_Musteriler">
+      <End Role="Musteriler" EntitySet="Musteriler" />
+      <End Role="Faturalar" EntitySet="Faturalar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gorseller_Urunler" Association="Self.FK_Gorseller_Urunler">
+      <End Role="Urunler" EntitySet="Urunler" />
+      <End Role="Gorseller" EntitySet="Gorseller" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kampanya_Urunler" Association="Self.FK_kampanya_Urunler">
+      <End Role="Urunler" EntitySet="Urunler" />
+      <End Role="kampanya" EntitySet="kampanya" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urunler_Kategori" Association="Self.FK_Urunler_Kategori">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Urunler" EntitySet="Urunler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urunler_Markalar" Association="Self.FK_Urunler_Markalar">
+      <End Role="Markalar" EntitySet="Markalar" />
+      <End Role="Urunler" EntitySet="Urunler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Yorumlar_Urunler" Association="Self.FK_Yorumlar_Urunler">
+      <End Role="Urunler" EntitySet="Urunler" />
+      <End Role="Yorumlar" EntitySet="Yorumlar" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
