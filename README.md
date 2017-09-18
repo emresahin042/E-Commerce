@@ -1,4 +1,4 @@
 # E-Commerce
 
-E-Commerce porject with Asp.Net MVC technology.
+E-Commerce project with Asp.Net MVC.
 
